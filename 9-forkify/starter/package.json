@@ -1,0 +1,21 @@
+{
+  "name": "forkfiy",
+  "version": "1.0.0",
+  "description": "forkfiy project",
+  "main": "webpack.config.js",
+  "dependencies": {
+    "webpack-cli": "^3.3.11",
+    "webpack": "^4.43.0"
+  },
+  "devDependencies": {
+    "html-webpack-plugin": "^4.3.0",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "scripts": {
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --open"
+  },
+  "author": "aloosh",
+  "license": "ISC"
+}
