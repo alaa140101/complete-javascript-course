@@ -72,8 +72,10 @@ const controlRecipe = async () => {
     state.recipe = new Recipe(id);
 
     try {
-      // Get recipe data
+      // Get recipe data and parse ingredients
       await state.recipe.getRecipe();
+      console.log(state.recipe.result)
+      state.recipe.parseIngredients();
   
       // Calcauate servings and time
       state.recipe.calcTime();
@@ -83,6 +85,7 @@ const controlRecipe = async () => {
       console.log(state.recipe);
     } catch (error) {
       alert('Error catching recipe.');
+      console.log(error);
     }
   }
 };
