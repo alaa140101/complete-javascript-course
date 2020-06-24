@@ -50,9 +50,6 @@ export default class Recipe {
       const unitIndex = arrIng.findIndex(el2 => units.includes(el2));
 
       let objIng;
-      // Test
-      console.log(unitIndex);
-
       if(unitIndex > -1){
         // There is a unit
         const arrCount = arrIng.slice(0, unitIndex);

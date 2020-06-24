@@ -11,6 +11,14 @@ export const clearResults = () => {
   elements.searchResPages.innerHTML = '';
 };
 
+export const highlightSelected = id => {
+  const resultArr = Array.from(document.querySelectorAll('.results__link'));
+
+  resultArr.forEach(el => el.classList.remove('results__link--active'));
+
+  document.querySelector(`a[href="#${id}"]`).classList.add('results__link--active');
+};
+
 // Limited by 4 words or 20 length
 const limitRecipeTitle = (title, limit = 4) => {
   const newTitle = [];
