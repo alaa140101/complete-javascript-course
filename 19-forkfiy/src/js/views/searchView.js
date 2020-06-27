@@ -16,11 +16,11 @@ export const highlightSelected = id => {
 
   resultArr.forEach(el => el.classList.remove('results__link--active'));
 
-  document.querySelector(`a[href="#${id}"]`).classList.add('results__link--active');
+  document.querySelector(`.results__link[href="#${id}"]`).classList.add('results__link--active');
 };
 
 // Limited by 4 words or 20 length
-const limitRecipeTitle = (title, limit = 4) => {
+ export const limitRecipeTitle = (title, limit = 4) => {
   const newTitle = [];
   if(title.length > limit * 4){
       const newTitle = title.split(' ').slice(0, limit);    
