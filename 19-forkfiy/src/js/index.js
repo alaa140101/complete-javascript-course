@@ -1,9 +1,11 @@
 import Search from './models/Search';
 import Recipe from './models/Recipe';
 import List from './models/List';
+import Likes from './models/Likes';
 import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
 import * as listView from './views/listView';
+//import * as likeView from './views/likeView';
 import { elements, renderLoader, clearLoader } from './views/base';
 
 /** Global state of the app
@@ -117,6 +119,37 @@ const controlList = () => {
   });
 }
 
+/**
+ * LIKE CONTROLLER
+ */
+const controlLike = () => {
+  if(!state.likes) state.likes = new Likes();
+  const currentID = state.recipe.id;
+
+  // User has not yet liked current recipe
+  if(!state.likes.isLiked(currentID)){
+    // Add like to the state
+    state.likes.addLike(currentID, state.recipe.title, state.recipe.author, state.recipe.img);
+
+    // Toggle the like button
+
+    // Add like to UI likes' list
+
+  // User has liked current recipe
+  }else{
+    // Remove like from the state
+    state.likes.deleteLike(currentID);
+
+    // Toggle the like button
+
+    // Remove like from UI likes' list
+  }
+  console.log(state.likes);
+}
+
+
+
+
 // Handle delete and update list item events
 elements.shopping.addEventListener('click', e => {
   const id = e.target.closest('.shopping__item').dataset.itemid;
@@ -130,7 +163,7 @@ elements.shopping.addEventListener('click', e => {
     listView.deleteItem(id);  
     // Handel the count update
   }else if (e.target.matches('.shopping__count-value')) {
-    const val = parseFloat(e.target.value);
+    const val = parseFloat(e.target.value, 10);
     state.list.updateCount(id, val);
   }
 });
@@ -153,11 +186,12 @@ elements.recipe.addEventListener('click', e => {
     // UI
     recipeView.updateServingsIngredients(state.recipe);
   } else if (e.target.matches('.recipe__btn--add, .recipe__btn--add *')){
+    // Add ingredients to shopping list
     controlList();
+  } else if (e.target.matches('.recipe__love, .recipe__love *')){
+    // Like control
+    controlLike();
   }
-
-  
-
 });
 
 window.l = new List();
