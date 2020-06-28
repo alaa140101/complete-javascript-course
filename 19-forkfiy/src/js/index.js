@@ -68,7 +68,6 @@ elements.searchResPages.addEventListener('click', e => {
 const controlRecipe = async () => {
   // Get ID from url
   const id = window.location.hash.replace('#', '');
-  console.log(id);
 
   if (id) {
     // Prepare UI for changes
@@ -84,7 +83,7 @@ const controlRecipe = async () => {
     try {
       // Get recipe data and parse ingredients
       await state.recipe.getRecipe();
-      //console.log(state.recipe.ingredients)
+
       state.recipe.parseIngredients();
   
       // Calcauate servings and time
@@ -157,7 +156,6 @@ const controlLike = () => {
 
   likesView.toggleLikeBtn(dislike);
   likesView.toggleLikeMenu(state.likes.getNumLikes());
-  console.log(state.likes);
 }
 
 // Restore liked recipes on page load
@@ -219,5 +217,3 @@ elements.recipe.addEventListener('click', e => {
     controlLike();
   }
 });
-
-window.l = new List();
